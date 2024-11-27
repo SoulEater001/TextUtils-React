@@ -30,12 +30,13 @@ export default function TextForm(props) {
   };
   const [text, setText] = useState("");
   return (<>
-    <div className="container">
+    <div className="container" style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>
       <h1>{props.heading}</h1>
       <div className="mb-3">
         <textarea
           className="form-control"
           id="myBox"
+          style={{ backgroundColor: props.mode === 'dark' ? 'grey' : 'white', color: props.mode === 'dark' ? 'white' : 'black' }}
           rows="8"
           value={text}
           onChange={handleOnChange}
@@ -56,14 +57,14 @@ export default function TextForm(props) {
           Remove Extra Spaces
         </button>
       </div>
-    </div>
+    </div >
 
-    <div className="container my-2">
+    <div className="container my-2" style={{ color: props.mode === 'dark' ? 'white' : 'black' }}>
       <h2>Text Summary</h2>
       <p>Words {text.split(" ").length} & Characters {text.length}</p>
       <p>{0.008 * text.split(" ").length} Minutes to read</p>
       <h2 className="my-2">Preview</h2>
-      <p>{text}</p>
+      <p>{text.length > 0 ? text : "Enter something to preview"}</p>
     </div>
   </>);
 }
